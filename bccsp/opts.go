@@ -4,10 +4,26 @@ Copyright IBM Corp. All Rights Reserved.
 SPDX-License-Identifier: Apache-2.0
 */
 
+/*
+加密涉及到了内容挺复杂的，是一门专业性很强的学科。
+笔者没有专门学过，在此只是略讲一些bccsp服务所涉及到的皮毛：
+
+RSA - 一种非对称的加密算法，用于加密。有几种族簇，如RSA1024，RSA2048等。
+AES - 一种块加密算法，用于加密成块的大量数据。有几种族簇，如AES128，AES192等。
+ECDSA - 一种椭圆曲线签名，用于签名。有几种族簇，如ECDSAP256，ECDSAP384等。
+Hash - 哈希，有几种族簇，如SHA256，SHA3_256等。
+HMAC - 密匙相关的哈希运算消息认证码。
+x509 - 证书的一种，可参看文章12中对证书的解释。
+PKCS#11 - 一套标准安全接口，可与安全硬件相关，以上的这些东西，可以找它来建立，读取，写入，修改，删除等操作进行管理。
+fabric所用到的这些技术的常量名称在/fabric/bccsp/opts.go中开始的部分定义，如ECDSA支持ECDSAP256，ECDSAP384等几种类型
+————————————————
+
+ */
+
 package bccsp
 
 const (
-	// ECDSA Elliptic Curve Digital Signature Algorithm (key gen, import, sign, verify),
+	// ECDSA Elliptic Curve Digital Signature Algorithm (key gen, import, sign, verify),ECDSA椭圆曲线数字签名算法
 	// at default security level.
 	// Each BCCSP may or may not support default security level. If not supported than
 	// an error will be returned.
@@ -19,7 +35,7 @@ const (
 	// ECDSA Elliptic Curve Digital Signature Algorithm over P-384 curve
 	ECDSAP384 = "ECDSAP384"
 
-	// ECDSAReRand ECDSA key re-randomization
+	// ECDSAReRand ECDSA key re-randomization ECDSA密钥重新随机化
 	ECDSAReRand = "ECDSA_RERAND"
 
 	// AES Advanced Encryption Standard at the default security level.

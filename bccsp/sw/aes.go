@@ -28,7 +28,8 @@ import (
 	"github.com/hyperledger/fabric/bccsp"
 )
 
-// GetRandomBytes returns len random looking bytes
+
+// GetRandomBytes returns len random looking bytes 获取一些随机的字节切片,内容随机
 func GetRandomBytes(len int) ([]byte, error) {
 	if len < 0 {
 		return nil, errors.New("Len must be larger than 0")
@@ -47,9 +48,11 @@ func GetRandomBytes(len int) ([]byte, error) {
 	return buffer, nil
 }
 
+//-------------------------这些都是全局函数---------------------------
+
 func pkcs7Padding(src []byte) []byte {
-	padding := aes.BlockSize - len(src)%aes.BlockSize
-	padtext := bytes.Repeat([]byte{byte(padding)}, padding)
+	padding := aes.BlockSize - len(src)%aes.BlockSize //16个块.每个块长度不知道
+	padtext := bytes.Repeat([]byte{byte(padding)}, padding) //重复padding个padding长度的切片
 	return append(src, padtext...)
 }
 

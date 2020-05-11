@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
  mkdir -p ~/pki/CA/private
 
  #1.CA自己签证书

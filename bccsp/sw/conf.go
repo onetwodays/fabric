@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 package sw
 
 import (
-	"crypto/elliptic"
+	"crypto/elliptic" //椭圆包实现了在素数域上的几个标准椭圆曲线。
 	"crypto/sha256"
 	"crypto/sha512"
 	"fmt"

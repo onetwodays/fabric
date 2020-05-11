@@ -19,7 +19,7 @@ import (
 
 type pkcs8Info struct {
 	Version             int
-	PrivateKeyAlgorithm []asn1.ObjectIdentifier
+	PrivateKeyAlgorithm []asn1.ObjectIdentifier  // []int
 	PrivateKey          []byte
 }
 

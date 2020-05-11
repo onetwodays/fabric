@@ -11,17 +11,17 @@ import (
 	"hash"
 )
 
-// Key represents a cryptographic key
+// Key represents a cryptographic(密码学) key
 type Key interface {
 
 	// Bytes converts this key to its byte representation,
 	// if this operation is allowed.
 	Bytes() ([]byte, error)
 
-	// SKI returns the subject key identifier of this key.
+	// SKI returns the subject key identifier of this key.SKI返回此密钥的主题密钥标识符
 	SKI() []byte
 
-	// Symmetric returns true if this key is a symmetric key,
+	// Symmetric returns true if this key is a symmetric key,如果此密钥是对称密钥，则Symmetric返回true
 	// false is this key is asymmetric
 	Symmetric() bool
 
@@ -40,12 +40,12 @@ type KeyGenOpts interface {
 	// Algorithm returns the key generation algorithm identifier (to be used).
 	Algorithm() string
 
-	// Ephemeral returns true if the key to generate has to be ephemeral,
+	// Ephemeral returns true if the key to generate has to be ephemeral(短暂的),
 	// false otherwise.
 	Ephemeral() bool
 }
 
-// KeyDerivOpts contains options for key-derivation with a CSP.
+// KeyDerivOpts contains options for key-derivation(推导,派生) with a CSP.
 type KeyDerivOpts interface {
 
 	// Algorithm returns the key derivation algorithm identifier (to be used).
@@ -56,7 +56,7 @@ type KeyDerivOpts interface {
 	Ephemeral() bool
 }
 
-// KeyImportOpts contains options for importing the raw material of a key with a CSP.
+// KeyImportOpts contains options for importing the raw material(材料) of a key with a CSP.
 type KeyImportOpts interface {
 
 	// Algorithm returns the key importation algorithm identifier (to be used).
@@ -76,7 +76,7 @@ type HashOpts interface {
 
 // SignerOpts contains options for signing with a CSP.
 type SignerOpts interface {
-	crypto.SignerOpts
+	crypto.SignerOpts //HashFunc() Hash
 }
 
 // EncrypterOpts contains options for encrypting with a CSP.
@@ -93,7 +93,7 @@ type BCCSP interface {
 	KeyGen(opts KeyGenOpts) (k Key, err error)
 
 	// KeyDeriv derives a key from k using opts.
-	// The opts argument should be appropriate for the primitive used.
+	// The opts argument should be appropriate for the primitive(原语) used.
 	KeyDeriv(k Key, opts KeyDerivOpts) (dk Key, err error)
 
 	// KeyImport imports a key from its raw representation using opts.

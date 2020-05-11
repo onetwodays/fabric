@@ -9,7 +9,7 @@ import (
 	"crypto"
 )
 
-// RevocationAlgorithm identifies the revocation algorithm
+// RevocationAlgorithm identifies the revocation algorithm 标识吊销算法
 type RevocationAlgorithm int32
 
 const (
@@ -135,7 +135,8 @@ func (o *IdemixNymPublicKeyImportOpts) Ephemeral() bool {
 	return o.Temporary
 }
 
-// IdemixCredentialRequestSignerOpts contains the option to create a Idemix credential request.
+// IdemixCredentialRequestSignerOpts contains the option to create a Idemix credential request.s包含用于创建Idemix凭据请求的选项。
+// 属性包含要包含在凭证中的属性的索引列表。
 type IdemixCredentialRequestSignerOpts struct {
 	// Attributes contains a list of indices of the attributes to be included in the
 	// credential. The indices are with the respect to IdemixIssuerKeyGenOpts#AttributeNames.

@@ -21,6 +21,8 @@ import (
 	"strings"
 	"testing"
 
+	"fmt"
+
 	"github.com/stretchr/testify/assert"
 )
 
@@ -31,6 +33,8 @@ func TestAESOpts(t *testing.T) {
 			&AES192KeyGenOpts{ephemeral},
 			&AES256KeyGenOpts{ephemeral},
 		} {
+			fmt.Println(reflect.TypeOf(opts).String())
+
 			expectedAlgorithm := reflect.TypeOf(opts).String()[7:13]
 			assert.Equal(t, expectedAlgorithm, opts.Algorithm())
 			assert.Equal(t, ephemeral, opts.Ephemeral())

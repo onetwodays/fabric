@@ -4,10 +4,20 @@ Copyright IBM Corp. All Rights Reserved.
 SPDX-License-Identifier: Apache-2.0
 */
 
+
+/*
+	需求：实现基于椭圆曲线ECDSA的数字签名和签名的验证
+	基本步骤
+	1.生成ECDSA密匙对并写入磁盘
+	2.读取ecdsa私匙并对明文散列值进行签名
+	3.读取ecdsa公匙验证数字签名的正确性
+*/
+
+
 package utils
 
 import (
-	"crypto/ecdsa"
+	"crypto/ecdsa"      //基于ECDSA的数字签名及验证
 	"crypto/elliptic"
 	"encoding/asn1"
 	"errors"
@@ -24,6 +34,7 @@ var (
 	// It is used to ensure that signature' S value is lower or equal to the
 	// curve group order halved. We accept only low-S signatures.
 	// They are precomputed for efficiency reasons.
+	// 内置的一些椭圆曲线
 	curveHalfOrders = map[elliptic.Curve]*big.Int{
 		elliptic.P224(): new(big.Int).Rsh(elliptic.P224().Params().N, 1),
 		elliptic.P256(): new(big.Int).Rsh(elliptic.P256().Params().N, 1),

@@ -21,7 +21,7 @@ import (
 	"github.com/hyperledger/fabric/bccsp"
 )
 
-// NewDummyKeyStore instantiate a dummy key store
+// NewDummyKeyStore instantiate a dummy key store 假的KeyStore
 // that neither loads nor stores keys
 func NewDummyKeyStore() bccsp.KeyStore {
 	return &dummyKeyStore{}
